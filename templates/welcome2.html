@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Scratch</title>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+    <script src="https://kit.fontawesome.com/24c494a6b6.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src={{ url_for('static', filename = 'scriptpics.js')}}></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "{{ url_for('static', filename='images.csv') }}",
+                dataType: "text",
+                success: function(data) {
+                    var lines = data.split("\n");
+    
+                    var container = document.getElementById("imageContainer");
+                    container.classList.add("builder");
+    
+                    for (var i = 1; i <= 5; i++) {
+                        var imageUrl = lines[i].split(",")[0];
+                        if (imageUrl) {
+                            var img = document.createElement("img");
+                            img.src = imageUrl;
+                            container.appendChild(img);
+                        }
+                    }
+
+                    setTimeout(function() {
+                        var imageItems = document.querySelectorAll("#imageContainer img");
+                        container.classList.add("builder-item");
+                        for (var i = 0; i < imageItems.length; i++) {
+                            var imageItem = imageItems[i];
+                            var productName = lines[i + 1].split(",")[1];
+        
+                            var nameElement = document.createElement("p");
+                            nameElement.textContent = productName;
+                            imageContainerp.appendChild(nameElement);
+                        }
+                    }, 100);
+    
+                    var cat3 = document.getElementById("cat3");
+                    cat3.classList.add("builder"); // Add the 'builder' class to cat3
+    
+                    for (var i = 6; i < 11; i++) {
+                        var imageUrl = lines[i].split(",")[0];
+                        if (imageUrl) {
+                            var img = document.createElement("img");
+                            img.src = imageUrl;
+                            cat3.appendChild(img);
+                        }
+                    }
+
+                    var cat2 = document.getElementById("cat2");
+                    cat2.classList.add("builder"); // Add the 'builder' class to cat2
+                    for (var i = 11; i < 16; i++) {
+                        var imageUrl = lines[i].split(",")[0];
+                        if (imageUrl) {
+                            var img = document.createElement("img");
+                            img.src = imageUrl;
+                            cat2.appendChild(img);
+                        }
+                    }
+
+                    var cat4 = document.getElementById("cat4");
+                    cat4.classList.add("builder"); // Add the 'builder' class to cat2
+                    for (var i = 16; i < 21; i++) {
+                        var imageUrl = lines[i].split(",")[0];
+                        if (imageUrl) {
+                            var img = document.createElement("img");
+                            img.src = imageUrl;
+                            cat4.appendChild(img);
+                        }
+                    }
+
+                    var cat4 = document.getElementById("cat5");
+                    cat4.classList.add("builder"); // Add the 'builder' class to cat2
+                    for (var i = 21; i < 26; i++) {
+                        var imageUrl = lines[i].split(",")[0];
+                        if (imageUrl) {
+                            var img = document.createElement("img");
+                            img.src = imageUrl;
+                            cat5.appendChild(img);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <a><img src="{{ url_for('static', filename='logo.png') }}" alt="brandLogo" id="landingPage" width = 100px></a>
+        </div>
+        <ul id="nav_bar">
+            <li><a href="/allproducts">All Products</a></li>
+            <li><a href="/allproducts">Handicrafts</a></li>
+            <li><a href="/allproducts">Paintings</a></li>
+        </ul> 
+        <div id="search">
+            <input type="text" id="search_bar" placeholder="Search for products, brands and more">
+            <i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+        </div>
+        <div id="right_icon">
+            <div id="reggDropdown">
+              <div id="drop">
+                  <a href="/signup" class="dropList">Signup</a>
+                  <a href="/login" class="dropList">Login</a>
+              </div>
+
+              <i class="fa-regular fa-user"></i>
+              <span>profile</span>
+          </div>
+            <div>
+                <i class="fa-regular fa-heart"></i>
+                <span>wishlist</span>
+            </div>
+            <div>
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>bag</span>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- COROUSEL SECTION -->
+    <div class="slider">
+        <div id="slides">
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          <input type="radio" name="radio-btn" id="radio4">
+
+        </div>
+
+        <div class="navigation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <label for="radio4" class="manual-btn"></label>
+        </div>
+      </div>
+
+
+      <!-- TOP BRANDS DISPLAY 1 HEADING -->
+      <h1 class="brand_heading">biggest deals on top products</h1>
+      <a href="/allproducts">
+      <div class="container builder">
+        <div id="imageContainer"></div><br></br>
+          <div id = "imageContainer img"></div>
+                  </div></a>
+
+         <!-- CATEGORIES DISPLAY 2 -->
+         <h1 class="brand_heading">trending in Paintings</h1>
+         <a href="/allproducts">
+         <div class="container builder">
+            <div id="imageContainer builder"><div id = "cat2"></div></div>
+         </div></a>
+         
+
+         <!-- CATEGORIES DISPLAY 3 -->
+         <h1 class="brand_heading">trending in home & living</h1>
+         <a href="/allproducts">
+         <div class="container builder">
+         <div id="imageContainer builder"><div id = "cat3"></div></div>
+         </div></a>
+
+
+          <!-- CATEGORIES DISPLAY 4 -->
+          <h1 class="brand_heading">trending in Furniture</h1>
+          <a href="/allproducts">
+          <div class="container builder">
+            <div id="imageContainer builder"><div id = "cat4"></div></div>
+          </div></a>
+
+
+          <!-- CATEGORIES DISPLAY 5 -->
+          <h1 class="brand_heading">trending in artifacts</h1>
+          <a href="/allproducts">
+          <div class="container builder">
+            <div id="imageContainer builder"><div id = "cat5"></div></div>
+          </div></a>
+        
+
+
+
+          <footer>
+              <section id="section_1">
+                  <div id="left">
+                      <div>
+                          <h4>Our services</h4>
+                          <p><a href = "/allproducts">Handicrafts</a></p>
+                          <a href = "/allproducts"><p>Art</p></a>
+                          <a href = "/allproducts"><p>home & living</p></a>
+                          <a href = "/allproducts"><p>beauty</p></a>
+                          <a href = "/allproducts"><p>Sculptures</p></a>
+                          <a href = "/allproducts"><p>Products<span id="latest">New</span></p></a>
+                      </div>
+                      <div>
+                        <h4>useful links</h4>
+                        <a href = "/allproducts"><p>Handicrafts</p></a>
+                        <a href = "/allproducts"><p>Paintings</p></a>
+                        <a href = "/terms"><p>t&c</p></a>
+                        <a href = "/terms"><p>terms of use</p></a>
+                        <a href = "/contactus"><p>Contact us</p></a>
+                        <a href = "/terms"><p>privacy policy</p></a>
+                      </div>
+                      <div>
+                          <h4>experience our app on mobile</h4>
+                          <img src="https://bit.ly/3LluZ4L" alt="android">
+                          <img src="https://bit.ly/3DmWQys" alt="ios">
+                          <h4 id="social_connect">keep in touch</h4>
+                          <div>
+                            <a href = "/facebook"><i class="fa-brands fa-facebook-square"></i></a>
+                            <a href = "/twitter"><i class="fa-brands fa-twitter-square"></i></a>
+                            <a href = "/youtube"><i class="fa-brands fa-youtube"></i></a>
+                            <a href = "/instagram"><i class="fa-brands fa-instagram"></i></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="right">
+                      <div>
+                          <img src="https://bit.ly/3JPiL47" alt="original">
+                          <p> <span>100% ORIGINAL</span> guarantee for all products at artscratch.com</p>
+                      </div>
+                      
+                  </div>
+              </section>
+              <section id="section_2">
+                  <h4>popular searches</h4>
+                  <div></div>
+              </section>
+              <section id="section_3">
+                <a href="">Lamps</a><a href="">Sculptures</a><a href="">Jewellery</a><a href="">Bamboo baskets</a><a href="">Mushroom Lamps</a><a href="">Paintings</a><a href="">Incense cones</a><a href="">Vases</a><a href="">Wall decors</a><a href="">Steel kalash</a><a href="">Metal arts</a><a href="">Lantern sets</a><a href="">Statues</a><a href="">Pots</a><a href="">Diyas</a>
+              </section>
+              <section id="section_4">
+                  <p>In case of any concern <a href= "/contactus">contact us</a></p>
+                  <p>&#169; 2023 www.artscratch.com. All rights reserved.</p>
+              </section>
+              <hr>
+             <section id="section_5">
+                 <h4>ONLINE SHOPPING FOR WOMEN: ARTSCRATCH ALL THE WAY
+                 </h4>
+                 <p>ArtScratch is your ultimate destination for online shopping for women. We pride ourselves on offering a curated selection of the finest products from local artisans, showcasing their creativity and craftsmanship. Our dedication to quality ensures that every item in our women's shopping collection is crafted with the utmost care and attention to detail.<br><br>
+
+                    Explore a wide range of handcrafted products, including unique home decor, exquisite jewelry, intricate artwork, and more. At ArtScratch, we believe in the power of supporting artisans and empowering women through their creations. By shopping with us, you not only discover one-of-a-kind pieces but also contribute to the livelihoods of these skilled artisans.<br><br>
+                    
+                    Our platform is a celebration of artistry, creativity, and style. We provide a seamless and enjoyable shopping experience where you can embrace your unique sense of style and find products that truly reflect your individuality. Whether you're looking for a statement piece to adorn your living space or a meaningful gift for someone special, ArtScratch offers a diverse range of products that captivate the senses and tell a story.<br><br>
+                    
+                    In addition to supporting local artisans, we understand the value of affordability. ArtScratch offers competitively priced products, ensuring that you can indulge in the joy of owning exceptional handmade items without breaking the bank. Take advantage of exclusive deals and seasonal discounts that make the online shopping experience at ArtScratch even more enticing.<br><br>
+                    
+                    Join us on our journey to celebrate the beauty of handicrafts, support local artisans, and empower women. Explore the world of art, creativity, and style by shopping at ArtScratch. Discover the stories behind each piece and make a meaningful connection with the artisans who bring them to life. Together, let's embrace the uniqueness of handmade creations and make a positive impact through our shopping choices.<br>
+                </p>
+             </section>
+             <section id="section_6">
+                 <h4>ARTSCRATCH: CELEBRATING HANDICRAFTS, LOCAL ARTISANS, AND PAINTINGS</h4>
+                 <p>Welcome to ArtScratch, the ultimate destination for women's online shopping that celebrates the beauty of handicrafts, showcases the talent of local artisans, and brings the world of paintings to your fingertips. Immerse yourself in the enchanting world of artistry and creativity with our curated collection of exquisite products.</p>
+                 <div>
+                 <ol>
+                     <li>Explore our wide range of handcrafted clothing, meticulously crafted accessories, and captivating footwear that exude uniqueness and charm. From handwoven textiles and embroidered garments to intricately designed jewelry and one-of-a-kind home decor pieces, each item at ArtScratch tells a story and reflects the rich cultural heritage of local artisans.</li>
+                     <li>Indulge in the allure of paintings with our collection of captivating artwork. Discover mesmerizing paintings that capture the essence of emotions, landscapes, and imaginative worlds, created by talented artists. Whether you're a connoisseur of art or seeking to add a touch of elegance to your space, our diverse range of paintings will captivate your senses.
+                    </li>
+                     <li>At ArtScratch, we are committed to promoting and supporting local artisans, empowering them to showcase their skills and creativity. By choosing to shop with us, you not only enhance your personal style but also contribute to the preservation of traditional craftsmanship and the empowerment of artisans.</li>
+                 </ol>
+                </div>
+                <p>Experience the joy of discovering unique and handcrafted treasures that make a statement and reflect your individuality. Our online shopping platform provides a seamless and delightful experience, allowing you to explore and select from a carefully curated collection of products.</p>
+
+                <p>Embrace the beauty of handicrafts, celebrate the talent of local artisans, and immerse yourself in the world of paintings at ArtScratch. Start your online shopping journey with us and indulge in the art of self-expression.</p>
+             </section>
+          </footer>
+
+
+    <script src="{{ url_for('static', filename='corousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='pics.js') }}"></script>
+
+
+    
+
+</body>
+
+
+</html>

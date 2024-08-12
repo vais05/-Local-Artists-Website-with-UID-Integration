@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel = "stylesheet" href = "{{ url_for('static', filename='stylesuser.css') }}">
+</head>
+<body>
+
+<h1 style="text-align:center; font-size: 50px;">User Profile</h1>
+
+<div class="card">
+  <img src="{{ url_for('static', filename='userimage.jpg') }}" alt="User" style="width:60%">
+  <h1>{{ username }}</h1>
+  <p class="title">Welcome to ArtScratch!</p>
+  <p>Local treasures, Artistic Gems</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+  </div>
+  <p><a href = "/contactus"><button>Contact</button></a></p>
+</div>
+
+</body>
+</html>

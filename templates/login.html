@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page in HTML with CSS Code Example</title>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylelogin.css') }}">
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1>Art<br>Scratch</h1>
+		<p>Unlock a world of creativity and craftsmanship.<br> Sign in to your account and connect with talented local artisans from your community.<br> 
+            Discover unique handcrafted treasures, support local talent, and be a part of a vibrant artistic community.</p>
+		<span>
+			<p>login with social media</p>
+			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+		</span>
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h5>Login</h5>
+		<div class="inputs">
+			<form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            {% if error %}
+            <div id="signup-error" class="error">{{ error }}</div>
+            {% endif%}
+		</div>
+			
+			<br><br>
+        <div class="footer">
+            New to the website? <a href="/signup">Create your account</a>
+        </div>
+	</div>
+	
+</div>
+  
+</body>
+</html>
